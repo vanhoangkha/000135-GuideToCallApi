@@ -1,0 +1,57 @@
+[
+{
+	"uri": "/1-front-end-deployment/",
+	"title": "Front-end Deployment",
+	"tags": [],
+	"description": "",
+	"content": "In the first step in this workshop, we will host the web application (front-end) with S3 Static website hosting:\n Open Amazon S3 console  Click Create bucket  Enter bucket name, such as: fcjdmswebstore   Select the region closest to you  Uncheck block from allowing public access   Check to I acknowledge that the current settings might result in this bucket and the objects within becoming public  Click Create bucket button  Click on created bucket  Click Properties tab  Scroll down to the bottom, click Edit in Static web hosting pattern  Select Enable to enable host web static on S3   Select Host a static website for Hosting type Enter index.html for Index document pattern  Click Save changes   After successfully enabling, please write down the path of the web  After successful enable, please take note of the path of the web:   Select Permissions tab Click Edit of Bucket policy pattern  Copy the below code block to Policy  { \u0026#34;Version\u0026#34;: \u0026#34;2012-10-17\u0026#34;, \u0026#34;Statement\u0026#34;: [ { \u0026#34;Sid\u0026#34;: \u0026#34;PublicReadGetObject\u0026#34;, \u0026#34;Effect\u0026#34;: \u0026#34;Allow\u0026#34;, \u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;, \u0026#34;Action\u0026#34;: \u0026#34;s3:GetObject\u0026#34;, \u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::BUCKET_NAME/*\u0026#34; } ] }    Replace BUCKET_NAME with the bucket name you created, then click Save changes    Open command-line/terminal in the folder where you want to save the source code   Copy the below commands  git clone https://github.com/PhamTHHanh/fcj-serverless-frontend.git cd fcj-serverless-frontend yarn build We have finished building the front-end. Next execute the following command to upload the build folder to S3  aws s3 cp build s3://fcj-book-store --recursive \rIf your upload fails, configure the access key ID, secret access key, aws region and output format with aws configure command\n\rResult after uploading:\nPaste the web link you take notes into your web browser  Your application currently has no data returned. To get data from DynamoDB, go to the next section.\n"
+},
+{
+	"uri": "/",
+	"title": "Serverless - A Guide to Writing Front-End Code for Calling API Gateway",
+	"tags": [],
+	"description": "",
+	"content": "Serverless - A Guide to Writing Front-End Code for Calling API Gateway Overview In the last workshop, we learned how to create and use a Lambda function that interacts with DynamoDB and uses Amplify for user authentication and storage. Next in this series, we build a web application (front-end) to interact with the database through Lambda and API Gateway.\nPlease do workshops 1 and 2 in this series before doing this one.\n\rThe architecture of the application we will build:\nContent  Front-end Deployment Config API Gateway Test APIs By Postman Test APIs With Front-end Cleanup  "
+},
+{
+	"uri": "/2-config-api-gw/",
+	"title": "Config API Gateway",
+	"tags": [],
+	"description": "",
+	"content": "Update Lambda function  Open AWS Lambda console. Select upload_document function. Comment on line 13 and uncomment line 12. Click Deploy  Config API Gateway  Open Amazon API Gateway console  Click Create API  Scroll down to REST API section, click Build  Leave the default REST for the protocol.   Select New API Enter API name: fcj-dms-api Select Endpoint type as Regional Click Create API  After creating the API, click Action | Create Resource to create resource for API.  Enter resource name: docs, then click Create Resource  Select docs resource, then click Action | Create Method  Click POST method và and click the ✔ symbol  Set up the method as follows:   Keep default Integration type as Lambda Function Check Use Lambda Proxy integration Select the region of the Lambda function you created Select upload_document function Finally press Save  Click OK  After created GET method, click Action | Create Resource to create next resource.  Enter resource name: id and resource path as {id}, then click Create Resource  Select {id} resource, then click Action | Create Method  Select GET method and click the ✔ symbol  Set up the method as follows:   Keep default Integration type as Lambda Function Check Use Lambda Proxy integration Select the region of the Lambda function you created Select list_documents function Finally press Save  Click OK  Click Action | Create Method to create a new method  Select DELETE method and click the ✔ symbol  Set up the method as follows:   Keep default Integration type as Lambda Function Check Use Lambda Proxy integration Select the region of the Lambda function you created Select delete_document function Finally press Save  Click OK  Select DELETE method, then select Method Request  Expand URL Query String Parameters section, click Add query string to add a new parameter  Enter parameter name: file and click the ✔ symbol. This parameter is value of of the name of the file you want to delete.  Select docs resource, then click Actions | Enable CORS  Click Enable CORS and replace existing CORS headers  Click Yes, replace existing values  Do the same to enable CORS for {id} resource   Select {id} resource, then click Actions | Enable CORS   Click Enable CORS and replace existing CORS headers   Click Yes, replace existing values  After completing the setup, we deploy the API. Select /docs, then click Actions | Deploy API  Select [New Stage]   Enter stage name: dev Click Deploy  Note down the URL of the API used for the next section.  Expand the stage, select the POST method and write down the URL.  select the DELETE method and write down the URL.  You have finished setting up the API. Next, we will test the API working and integrate it into our application.\n"
+},
+{
+	"uri": "/3-test-api-by-postman/",
+	"title": "Test APIs By Postman",
+	"tags": [],
+	"description": "",
+	"content": "In this step, we will test operation of the APIs using Postman tool.\nTest the listing API  Click + to add a new tab   Select GET method Replace {id} with abcd1234 Click Send  The responses result is all the information of the user\u0026rsquo;s files with the id abcd1234  Test the writing API  Similarly create a new tab   Select POST method Enter URL of the writing API that recorded from the previous step In Body pattern, select raw Copy the below text block:  [{ \u0026#34;user_id\u0026#34;: \u0026#34;abcd1234\u0026#34;, \u0026#34;file\u0026#34;: \u0026#34;flowers.png\u0026#34;, \u0026#34;folder\u0026#34;: \u0026#34;\u0026#34;, \u0026#34;identityId\u0026#34;: \u0026#34;123456cvbn\u0026#34;, \u0026#34;modified\u0026#34;: \u0026#34;21-03-2023\u0026#34;, \u0026#34;size\u0026#34;: \u0026#34;32KB\u0026#34;, \u0026#34;type\u0026#34;: \u0026#34;png\u0026#34;, \u0026#34;tag\u0026#34;: \u0026#34;image\u0026#34; }]  Click Send  Wait a moment, see the responses returned  Open the console of DynamoDB, select Explore items and select the Documents table to check the results:  Test the deleting API  Add a new tab to call the delete API   Select DELETE method Enter URL of the deleting API that recorded from the previous step, replace {id} with abcd1234 In the Params section, enter file for the key and flowers.png for the value Click Send  Check the responses result:  Back to the Documents table, click the Refresh button to see the results  "
+},
+{
+	"uri": "/4-test-front-end/",
+	"title": "Test APIs With Front-end",
+	"tags": [],
+	"description": "",
+	"content": "After testing that the APIs work properly with Postman, we will test the APIs that are called with the front-end built from part 2.\n Open constant.js in the root folder of project   Change value of APP_API_URL with your URL: Save file  Run the command lines under here:  yarn build aws s3 cp build s3://BUCKET_NAME --recursive Replace BUCKET_NAME with the bucket name you created in part 1.\nGo back to the web application in part 1. Log in with the account you registered in workshop 2.   Click Upload  Click Add files   Select the files you want to upload Can enter tag or ignore Click Upload  Return to the DynamoDB dashboard and click the Refresh icon to see the results.   Open the console of the S3 bucket, check if the file has been uploaded.  Return to the application, and select the My Document tab on the left menu. You will see a list of files that have just been uploaded.   Click Choose to switch to delete mode   Select the file you want to delete Click Delete   File has been deleted   Check Documents table   And you can click the download icon to download a file you want  We have completed the implementation and testing of the API. You should clean up the resources of this workshop so that in the next article we will initialize resources with the AWS Serverless Application Model (AWS SAM).\n"
+},
+{
+	"uri": "/5-cleanup/",
+	"title": "Cleanup",
+	"tags": [],
+	"description": "",
+	"content": " Delete DynamoDB table   Open DynamoDB console Select Tables on the left menu Select Books table Click Delete Enter delete and click Delete table  Delete S3 bucket   Open S3 console Select fcjdmswebstore bucket Click Empty Enter permanently delete and click Empty Select fcjdmsstore\u0026hellip;-dev bucket Click Empty Enter permanently delete and click Emptys  Delete REST API   Open API Gateway console Select fcj-dms-api Click Actions and select Delete Click Delete  Delete Lambda functions   Open AWS Lambda console Select list_documents function Click Actions Select Delete Enter delete and click Delete Similar to upload_document, delete_document functions.  Run the following command in the project root directory:  amplify remove auth amplify remove storage amplify push amplify delete "
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

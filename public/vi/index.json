@@ -1,0 +1,57 @@
+[
+{
+	"uri": "/vi/",
+	"title": "Serverless - Hướng dẫn viết Front-end gọi API Gateway",
+	"tags": [],
+	"description": "",
+	"content": "Serverless - Hướng dẫn viết Front-end gọi API Gateway Tổng quan Trong bài lần trước, chúng ta đã biết cách tạo và sử dụng Lambda function tương tác với DynamoDB và sử dụng Amplify cho việc xác thực người dùng và lưu trữ. Tiếp theo trong series này, chúng ta dựng một ứng dụng web (front-end) để tương tác với cơ sở dữ liệu thông qua Lambda và API Gateway.\nBạn hãy thực hiện workshop số 1 và số 2 trong series này trước khi thực hiện bài này.\n\rKiến trúc của ứng dụng chúng ta sẽ xây dựng:\nNội dung  Triển khai Front-end Cấu hình API Gateway Kiểm tra API với Postman Kiểm tra API với Front-end Dọn dẹp tài nguyên  "
+},
+{
+	"uri": "/vi/1-front-end-deployment/",
+	"title": "Triển Khai Front-end",
+	"tags": [],
+	"description": "",
+	"content": "Bước đầu trong bài này, chúng ta sẽ host ứng dụng web (front-end) với S3 Static website hosting:\n Mở bảng điều khiển Amazon S3  Ấn Create bucket  Nhập tên cho bucket, ví dụ: fcjdmswebstore   Chọn vùng gần bạn nhất  Bỏ chọn chặn cho phép truy cập public   Tích vào mục I acknowledge that the current settings might result in this bucket and the objects within becoming public  Ấn nút Create bucket  Ấn vào bucket vừa tạo  Ấn sang tab Properties  Kéo xuống cuối trang, ấn Edit của mục Static web hosting  Chọn Enable để kích hoạt host web tĩnh trên S3   Nhập index.html cho mục Index document  Ấn nút Save changes   Sau khi kích hoạt thành công, bạn hãy ghi lại đường dẫn của web  Sau đó, chúng ta cần thêm policy cho S3 bucket để có thể truy cập được:   Chọn sang tab Permissions Ấn nút Edit tại mục Bucket policy  Sao chép đoạn dưới đây vào mục Policy  {\r\u0026#34;Version\u0026#34;: \u0026#34;2012-10-17\u0026#34;,\r\u0026#34;Statement\u0026#34;: [\r{\r\u0026#34;Sid\u0026#34;: \u0026#34;PublicReadGetObject\u0026#34;,\r\u0026#34;Effect\u0026#34;: \u0026#34;Allow\u0026#34;,\r\u0026#34;Principal\u0026#34;: \u0026#34;*\u0026#34;,\r\u0026#34;Action\u0026#34;: \u0026#34;s3:GetObject\u0026#34;,\r\u0026#34;Resource\u0026#34;: \u0026#34;arn:aws:s3:::BUCKET_NAME/*\u0026#34;\r}\r]\r}  Thay thế BUCKET_NAME bằng tên bucket mà bạn đặt, sau đó ấn nút Save changes  Tiếp theo chạy câu lệnh sau tại thư mục gốc của project bạn đã tải về từ workshop 2.  yarn build\raws s3 cp build s3://BUCKET_NAME --recursive  They thế BUCKET_NAME bằng tên bucket mà bạn đặt  Nếu bạn tải lên thất bại, hãy cấu hình access key ID, secret access key, aws region và output format với câu lệnh aws configure\n\rKết quả sau khi tải xong:\nDán đường dẫn web mà bạn vừa ghi lại vào trình duyệt web của bạn  Bạn đã hoàn thành việc host website của mình trên S3. Sang phần tiếp theo chúng ta cập nhật lại các lambda function của bài workshop số 2.\n"
+},
+{
+	"uri": "/vi/2-config-api-gw/",
+	"title": "Thiết Lập API Gateway",
+	"tags": [],
+	"description": "",
+	"content": "Cập nhật Lambda function  Mở bảng điều khiển của AWS Lambda. Chọn function upload_document. Comment dòng số 13 và bỏ comment dòng số 12. Ấn Deploy  Thiết lập API Gateway  Mở bảng điều khiển của Amazon API Gateway  Ấn Create API  Kéo xuống mục REST API, ấn Build  Để mặc định REST cho protocol.   Chọn New API Nhập tên cho API: fcj-dms-api Chọn kiểu Endpoint là Regional Ấn Create API  Sau khi tạo xong API, ấn Action | Create Resource để tạo resource cho API.  Nhập tên cho resource: docs, sau đó ấn Create Resource  Chọn resource docs, sau đó ấn Action | Create Method  Chọn method POST và ấn biểu tượng ✔  Thiết lập method như sau:   Giữ mặc định kiểu tích hợp là Lambda Function Tích vào Use Lambda Proxy integration Chọn vùng của Lambda function mà bạn đã tạo Chọn function upload_document Cuối cùng ấn Save  Ấn OK  Sau khi tạo xong method, ấn Action | Create Resource để tạo resource tiếp theo.  Nhập tên cho resource: id và resource path là {id}, sau đó ấn Create Resource  Chọn resource {id}, sau đó ấn Action | Create Method  Chọn method GET và ấn biểu tượng ✔  Thiết lập method như sau:   Giữ mặc định kiểu tích hợp là Lambda Function Tích vào Use Lambda Proxy integration Chọn vùng của Lambda function mà bạn đã tạo Chọn function list_documents Cuối cùng ấn Save  Ấn OK  Ấn Action | Create Method để tạo method mới  Chọn method DELETE và ấn biểu tượng ✔  Thiết lập method như sau:   Giữ mặc định kiểu tích hợp là Lambda Function Tích vào Use Lambda Proxy integration Chọn vùng của Lambda function mà bạn đã tạo Chọn function delete_document Cuối cùng ấn Save  Ấn OK  Chọn method DELETE, sau đó chọn Method Request  Mở rộng URL Query String Parameters, ấn Add query string để thêm một parameter mới  Nhập tên của parameter: file và ấn biểu tượng ✔. Parameter này lưu giá trị tên của file mà bạn muốn xoá.  Chọn resource docs, sau đó ấn Actions | Enable CORS  Ấn Enable CORS and replace existing CORS headers  Ấn Yes, replace existing values  Làm tương tự để kích hoạt CORS cho resource {id}   Chọn resource {id}, sau đó ấn Actions | Enable CORS   Ấn Enable CORS and replace existing CORS headers   Ấn Yes, replace existing values  Sau khi hoàn thành thiết lập, chúng ta deploy API. Chọn /docs, sau đó ấn Actions | Deploy API  Chọn [New Stage]   Nhập tên cho stage: dev Ấn Deploy  Ghi lại URL của API dùng cho phần tiếp theo.  Mở rộng stage, chọn method POST và ghi lại URL.  Chọn method DELETE và ghi lại URL.  Bạn đã hoàn thành việc thiết lập API. Tiếp theo chúng ta sẽ kiểm tra hoạt động của API và tích hợp nó vào ứng dụng của mình.\n"
+},
+{
+	"uri": "/vi/3-test-api-by-postman/",
+	"title": "Kiểm Tra API Với Postman",
+	"tags": [],
+	"description": "",
+	"content": "Trong bước này, chúng ta sẽ kiểm tra hoạt động của các API bằng công cụ Postman\nKiểm tra API đọc  Ấn vào dấu + để thêm 1 tab mới   Chọn GET method Nhập URL của API đọc đã ghi lại từ bước trước Thay {id} bằng abcd1234 Ấn nút Send  Kết quả trả về là toàn thông tin các tệp của người dùng có id là abcd1234  Kiểm tra API ghi  Tương tự tạo một tab mới   Chọn POST method Nhập URL của API ghi đã ghi lại từ bước trước Trong mục Body, chọn raw Sao chép đoạn dưới đây:  [{ \u0026#34;user_id\u0026#34;: \u0026#34;abcd1234\u0026#34;, \u0026#34;file\u0026#34;: \u0026#34;flowers.png\u0026#34;, \u0026#34;folder\u0026#34;: \u0026#34;\u0026#34;, \u0026#34;identityId\u0026#34;: \u0026#34;123456cvbn\u0026#34;, \u0026#34;modified\u0026#34;: \u0026#34;21-03-2023\u0026#34;, \u0026#34;size\u0026#34;: \u0026#34;32KB\u0026#34;, \u0026#34;type\u0026#34;: \u0026#34;png\u0026#34;, \u0026#34;tag\u0026#34;: \u0026#34;image\u0026#34; }]  Ấn Send  Đợi một chút, xem kết quả trả về  Mở bảng điều khiển của DynamoDB, chọn Explore items và chọn bảng Documents để kiểm tra kết quả:  Kiểm tra API xoá  Thêm một tab mới để thực hiện API xoá   Chọn DELETE method Nhập URL của API xoá dữ liệu đã ghi lại từ bước trước, thay {id} bằng abcd1234 Trong mục Params, nhập file cho key và flowers.png cho value Ấn nút Send  Kiểm tra kết quả trả về:  Quay lại với bảng Documents, ấn nút Refresh để xem kết quả  "
+},
+{
+	"uri": "/vi/4-test-front-end/",
+	"title": "Kiểm Tra API Với Front-end",
+	"tags": [],
+	"description": "",
+	"content": "Sau khi kiểm tra các API hoạt động đúng với Postman, chúng ta sẽ kiểm tra các API được gọi với front-end xây dựng từ bước 2.\n Mở tệp constant.js trong thư mục gốc của project   Thay giá trị cho APP_API_URL bằng URL của bạn: Lưu thay đổi  Chạy các dòng lệnh dưới đây:  yarn build aws s3 cp build s3://BUCKET_NAME --recursive Thay BUCKET_NAME bằng tên bucket bạn đã tạo ở phần 1.\nTrở lại ứng dụng web trong phần 1. Đăng nhập bằng tài khoản bạn đã đăng ký ở workshop 2.   Ấn Upload  Ấn Add files   Chọn các tệp bạn muốn tải lên Có thể nhập tag hoặc bỏ qua Ấn Upload  Quay lại bảng điều của DynamoDB và ấn biểu tượng Refresh để xem kết quả.   Mở bảng điều khiển của S3 bucket, kiểm tra xem tệp đã được tải lên chưa.  Trở lại với ứng dụng, chọn tab My Document ở menu phía bên trái. Bạn sẽ thấy danh sách các tệp vừa được tải lên.   Ấn Choose để chuyển sang chế độ xoá   Chọn tệp mà bạn muốn xoá Ấn Delete   Tệp đã được xoá   Kiểm tra bảng Documents   Và bạn có thể ấn vào biểu tượng download để tải một tệp mà bạn muốn  Chúng ta đã hoàn thành xong việc triển khai và kiểm tra hoạt động của API. Bạn nên dọn dẹp tài nguyên của bài này để sang bài tiếp theo chúng ta sẽ khởi tạo các tài nguyên với AWS Serverless Application Model (AWS SAM).\n"
+},
+{
+	"uri": "/vi/5-cleanup/",
+	"title": "Dọn Dẹp Tài Nguyên",
+	"tags": [],
+	"description": "",
+	"content": " Xoá bảng trong DynamoDB   Mở bảng điều khiển của DynamoDB Chọn Tables ở menu phía bên trái Chọn bảng Documents Ấn Delete Nhập delete và ấn Delete table  Xoá S3 bucket   Mở bảng điều khiển của S3 Chọn bucket fcjdmswebstore Ấn nút Empty Nhập permanently delete và ấn Empty Chọn bucket fcjdmsstore\u0026hellip;-dev Ấn nút Empty Nhập permanently delete và ấn Empty  Xoá REST API   Mở bảng điều khiển của API Gateway Chọn fcj-dms-api Ấn Actions và chọn Delete Ấn Delete  Xoá Lambda function   Mở bảng điều khiển của AWS Lambda Chọn list_documents function Ấn Actions Chọn Delete Nhập delete và ấn Delete Tương tự với các function upload_document, delete_document.  Chạy câu lệnh sau ở thư mục gốc của project:  amplify remove auth amplify remove storage amplify push amplify delete "
+},
+{
+	"uri": "/vi/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/vi/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
