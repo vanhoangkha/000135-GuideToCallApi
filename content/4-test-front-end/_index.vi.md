@@ -51,7 +51,7 @@ Thay `BUCKET_NAME` bằng tên bucket bạn đã tạo ở phần 1.
 
 ![WebApp](/images/4-test-front-end/4-test-front-end-7.png?featherlight=false&width=90pc)
 
-- Ấn **OK** đê xác nhận xoá tệp.
+- Ấn **OK** để xác nhận xoá tệp.
 
 ![WebApp](/images/4-test-front-end/4-test-front-end-8.png?featherlight=false&width=90pc)
 
@@ -65,6 +65,6 @@ Thay `BUCKET_NAME` bằng tên bucket bạn đã tạo ở phần 1.
 
 - Và bạn có thể ấn vào biểu tượng download để tải một tệp mà bạn muốn
 
-![WebApp](/images/4-test-front-end/4-test-front-end-10.png?featherlight=false&width=90pc)
+![WebApp](/images/4-test-front-end/4-test-front-end-11.png?featherlight=false&width=90pc)
 
 Chúng ta đã hoàn thành xong việc triển khai và kiểm tra hoạt động của API. Bạn nên dọn dẹp tài nguyên của bài này để sang bài tiếp theo chúng ta sẽ khởi tạo các tài nguyên với AWS Serverless Application Model (AWS SAM).
