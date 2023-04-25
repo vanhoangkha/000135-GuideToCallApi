@@ -172,7 +172,7 @@ pre : " <b> 2. </b> "
 
 ![ConfigAPI](/images/2-config-api-gw/2-config-api-gw-34.png?featherlight=false&width=90pc)
 
-32. Chọn method DELETE và ghi lại URL.
+32. Chọn method **DELETE** và ghi lại URL.
 
 ![ConfigAPI](/images/2-config-api-gw/2-config-api-gw-35.png?featherlight=false&width=90pc)
 

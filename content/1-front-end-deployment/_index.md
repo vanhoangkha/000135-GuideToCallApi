@@ -75,21 +75,22 @@ In the first step in this workshop, we will host the web application (front-end)
     ]
 }
 ```
-- - Replace `BUCKET_NAME` with the bucket name you created, then click **Save changes**
+- Replace `BUCKET_NAME` with the bucket name you created, then click **Save changes**
 
 ![SettingBucket](/images/1-front-end-deployment/1-front-end-deployment-13.png?featherlight=false&width=90pc)
 
-13. Open command-line/terminal in the folder where you want to save the source code
-- Copy the below commands
+13. Open the **src/component/Home/Upload.js** file in the application's source code directory and uncomment the code that calls the API to write data to DynamoDB.
+
+![SettingBucket](/images/1-front-end-deployment/1-front-end-deployment-16.png?featherlight=false&width=90pc)
+
+14. Next run the following command at the root of the project you downloaded from workshop 2.
 ```
-git clone https://github.com/PhamTHHanh/fcj-serverless-frontend.git
-cd fcj-serverless-frontend
 yarn build
+aws s3 cp build s3://BUCKET_NAME --recursive
 ```
-14. We have finished building the front-end. Next execute the following command to upload the **build** folder to S3
-```
-aws s3 cp build s3://fcj-book-store --recursive
-```
+
+- Replace `BUCKET_NAME` with the bucket name you created
+
 {{% notice note %}}
 If your upload fails, configure the access key ID, secret access key, aws region and output format with **aws configure** command
 {{% /notice %}}
@@ -101,4 +102,4 @@ Result after uploading:
 
 ![SettingBucket](/images/1-front-end-deployment/1-front-end-deployment-15.png?featherlight=false&width=90pc)
 
-Your application currently has no data returned. To get data from DynamoDB, go to the next section.
+You have finished hosting your website on S3. In the next section, we update the lambda functions of workshop 2.

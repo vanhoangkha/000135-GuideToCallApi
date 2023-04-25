@@ -25,7 +25,7 @@ In this step, we will test operation of the APIs using [Postman](https://www.pos
 - In **Body** pattern, select **raw**
 - Copy the below text block:
 ```
-[{
+{
       "user_id": "abcd1234",
       "file": "flowers.png",
       "folder": "",
@@ -34,7 +34,7 @@ In this step, we will test operation of the APIs using [Postman](https://www.pos
       "size": "32KB",
       "type": "png",
       "tag": "image"
-}]
+}
 ```
 - Click **Send**
 

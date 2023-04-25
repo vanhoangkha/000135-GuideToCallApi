@@ -79,13 +79,17 @@ Bước đầu trong bài này, chúng ta sẽ host ứng dụng web (front-end)
 
 ![SettingBucket](/images/1-front-end-deployment/1-front-end-deployment-13.png?featherlight=false&width=90pc)
 
-13. Tiếp theo chạy câu lệnh sau tại thư mục gốc của project bạn đã tải về từ workshop 2.
+13. Mở tệp **src/component/Home/Upload.js** trong thư mục source code của ứng dụng và bỏ comment đoạn code gọi API ghi dữ liệu vào DynamoDB.
+
+![SettingBucket](/images/1-front-end-deployment/1-front-end-deployment-16.png?featherlight=false&width=90pc)
+
+14. Tiếp theo chạy câu lệnh sau tại thư mục gốc của project bạn đã tải về từ workshop 2.
 ```
 yarn build
 aws s3 cp build s3://BUCKET_NAME --recursive
 ```
 
-- They thế `BUCKET_NAME` bằng tên bucket mà bạn đặt
+- Thay thế `BUCKET_NAME` bằng tên bucket mà bạn đặt
 
 {{% notice note %}}
 Nếu bạn tải lên thất bại, hãy cấu hình access key ID, secret access key, aws region và output format với câu lệnh **aws configure**

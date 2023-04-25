@@ -26,7 +26,7 @@ Trong bước này, chúng ta sẽ kiểm tra hoạt động của các API bằ
 - Trong mục **Body**, chọn **raw**
 - Sao chép đoạn dưới đây:
 ```
-[{
+{
       "user_id": "abcd1234",
       "file": "flowers.png",
       "folder": "",
@@ -35,7 +35,7 @@ Trong bước này, chúng ta sẽ kiểm tra hoạt động của các API bằ
       "size": "32KB",
       "type": "png",
       "tag": "image"
-}]
+}
 ```
 - Ấn **Send**
 

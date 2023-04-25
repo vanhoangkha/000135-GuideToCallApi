@@ -12,21 +12,21 @@
     <title>Front-end Deployment :: Serverless - A Guide to Writing Front-End Code for Calling API Gateway</title>
 
     
-    <link href="/css/nucleus.css?1682407152" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1682407152" rel="stylesheet">
-    <link href="/css/hybrid.css?1682407152" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1682407152" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1682407152" rel="stylesheet">
-    <link href="/css/auto-complete.css?1682407152" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1682407152" rel="stylesheet">
-    <link href="/css/theme.css?1682407152" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1682407152" rel="stylesheet">
+    <link href="/css/nucleus.css?1682433863" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1682433863" rel="stylesheet">
+    <link href="/css/hybrid.css?1682433863" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1682433863" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1682433863" rel="stylesheet">
+    <link href="/css/auto-complete.css?1682433863" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1682433863" rel="stylesheet">
+    <link href="/css/theme.css?1682433863" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1682433863" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1682407152" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1682433863" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1682407152"></script>
+    <script src="/js/jquery-3.3.1.min.js?1682433863"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1682407152"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1682407152"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1682433863"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1682433863"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1682407152"></script>
+<script type="text/javascript" src="/js/search.js?1682433863"></script>
 
     
   </div>
@@ -454,27 +454,22 @@
     ]
 }
 </code></pre><ul>
-<li>
-<ul>
 <li>Replace <code>BUCKET_NAME</code> with the bucket name you created, then click <strong>Save changes</strong></li>
-</ul>
-</li>
 </ul>
 <p><img src="/images/1-front-end-deployment/1-front-end-deployment-13.png?featherlight=false&amp;width=90pc" alt="SettingBucket"></p>
 <ol start="13">
-<li>Open command-line/terminal in the folder where you want to save the source code</li>
+<li>Open the <strong>src/component/Home/Upload.js</strong> file in the application&rsquo;s source code directory and uncomment the code that calls the API to write data to DynamoDB.</li>
 </ol>
-<ul>
-<li>Copy the below commands</li>
+<p><img src="/images/1-front-end-deployment/1-front-end-deployment-16.png?featherlight=false&amp;width=90pc" alt="SettingBucket"></p>
+<ol start="14">
+<li>Next run the following command at the root of the project you downloaded from workshop 2.</li>
+</ol>
+<pre tabindex="0"><code>yarn build
+aws s3 cp build s3://BUCKET_NAME --recursive
+</code></pre><ul>
+<li>Replace <code>BUCKET_NAME</code> with the bucket name you created</li>
 </ul>
-<pre tabindex="0"><code>git clone https://github.com/PhamTHHanh/fcj-serverless-frontend.git
-cd fcj-serverless-frontend
-yarn build
-</code></pre><ol start="14">
-<li>We have finished building the front-end. Next execute the following command to upload the <strong>build</strong> folder to S3</li>
-</ol>
-<pre tabindex="0"><code>aws s3 cp build s3://fcj-book-store --recursive
-</code></pre><p>
+<p>
 <div class="notices note" ><p>If your upload fails, configure the access key ID, secret access key, aws region and output format with <strong>aws configure</strong> command</p>
 </div>
 
@@ -484,7 +479,7 @@ Result after uploading:</p>
 <li>Paste the web link you take notes into your web browser</li>
 </ol>
 <p><img src="/images/1-front-end-deployment/1-front-end-deployment-15.png?featherlight=false&amp;width=90pc" alt="SettingBucket"></p>
-<p>Your application currently has no data returned. To get data from DynamoDB, go to the next section.</p>
+<p>You have finished hosting your website on S3. In the next section, we update the lambda functions of workshop 2.</p>
 
 
 
@@ -626,19 +621,19 @@ Result after uploading:</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1682407152"></script>
-    <script src="/js/perfect-scrollbar.min.js?1682407152"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1682407152"></script>
-    <script src="/js/jquery.sticky.js?1682407152"></script>
-    <script src="/js/featherlight.min.js?1682407152"></script>
-    <script src="/js/highlight.pack.js?1682407152"></script>
+    <script src="/js/clipboard.min.js?1682433863"></script>
+    <script src="/js/perfect-scrollbar.min.js?1682433863"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1682433863"></script>
+    <script src="/js/jquery.sticky.js?1682433863"></script>
+    <script src="/js/featherlight.min.js?1682433863"></script>
+    <script src="/js/highlight.pack.js?1682433863"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1682407152"></script>
-    <script src="/js/learn.js?1682407152"></script>
-    <script src="/js/hugo-learn.js?1682407152"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1682433863"></script>
+    <script src="/js/learn.js?1682433863"></script>
+    <script src="/js/hugo-learn.js?1682433863"></script>
 
-    <link href="/mermaid/mermaid.css?1682407152" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1682407152"></script>
+    <link href="/mermaid/mermaid.css?1682433863" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1682433863"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

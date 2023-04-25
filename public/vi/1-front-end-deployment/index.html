@@ -12,21 +12,21 @@
     <title>Triển Khai Front-end :: Serverless - A Guide to Writing Front-End Code for Calling API Gateway</title>
 
     
-    <link href="/css/nucleus.css?1682407152" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1682407152" rel="stylesheet">
-    <link href="/css/hybrid.css?1682407152" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1682407152" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1682407152" rel="stylesheet">
-    <link href="/css/auto-complete.css?1682407152" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1682407152" rel="stylesheet">
-    <link href="/css/theme.css?1682407152" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1682407152" rel="stylesheet">
+    <link href="/css/nucleus.css?1682433863" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1682433863" rel="stylesheet">
+    <link href="/css/hybrid.css?1682433863" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1682433863" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1682433863" rel="stylesheet">
+    <link href="/css/auto-complete.css?1682433863" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1682433863" rel="stylesheet">
+    <link href="/css/theme.css?1682433863" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1682433863" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1682407152" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1682433863" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1682407152"></script>
+    <script src="/js/jquery-3.3.1.min.js?1682433863"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1682407152"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1682407152"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1682433863"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1682433863"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1682407152"></script>
+<script type="text/javascript" src="/js/search.js?1682433863"></script>
 
     
   </div>
@@ -457,12 +457,16 @@
 </ul>
 <p><img src="/images/1-front-end-deployment/1-front-end-deployment-13.png?featherlight=false&amp;width=90pc" alt="SettingBucket"></p>
 <ol start="13">
+<li>Mở tệp <strong>src/component/Home/Upload.js</strong> trong thư mục source code của ứng dụng và bỏ comment đoạn code gọi API ghi dữ liệu vào DynamoDB.</li>
+</ol>
+<p><img src="/images/1-front-end-deployment/1-front-end-deployment-16.png?featherlight=false&amp;width=90pc" alt="SettingBucket"></p>
+<ol start="14">
 <li>Tiếp theo chạy câu lệnh sau tại thư mục gốc của project bạn đã tải về từ workshop 2.</li>
 </ol>
 <pre tabindex="0"><code>yarn build
 aws s3 cp build s3://BUCKET_NAME --recursive
 </code></pre><ul>
-<li>They thế <code>BUCKET_NAME</code> bằng tên bucket mà bạn đặt</li>
+<li>Thay thế <code>BUCKET_NAME</code> bằng tên bucket mà bạn đặt</li>
 </ul>
 
 <div class="notices note" ><p>Nếu bạn tải lên thất bại, hãy cấu hình access key ID, secret access key, aws region và output format với câu lệnh <strong>aws configure</strong></p>
@@ -616,19 +620,19 @@ aws s3 cp build s3://BUCKET_NAME --recursive
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1682407152"></script>
-    <script src="/js/perfect-scrollbar.min.js?1682407152"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1682407152"></script>
-    <script src="/js/jquery.sticky.js?1682407152"></script>
-    <script src="/js/featherlight.min.js?1682407152"></script>
-    <script src="/js/highlight.pack.js?1682407152"></script>
+    <script src="/js/clipboard.min.js?1682433863"></script>
+    <script src="/js/perfect-scrollbar.min.js?1682433863"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1682433863"></script>
+    <script src="/js/jquery.sticky.js?1682433863"></script>
+    <script src="/js/featherlight.min.js?1682433863"></script>
+    <script src="/js/highlight.pack.js?1682433863"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1682407152"></script>
-    <script src="/js/learn.js?1682407152"></script>
-    <script src="/js/hugo-learn.js?1682407152"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1682433863"></script>
+    <script src="/js/learn.js?1682433863"></script>
+    <script src="/js/hugo-learn.js?1682433863"></script>
 
-    <link href="/mermaid/mermaid.css?1682407152" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1682407152"></script>
+    <link href="/mermaid/mermaid.css?1682433863" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1682433863"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
