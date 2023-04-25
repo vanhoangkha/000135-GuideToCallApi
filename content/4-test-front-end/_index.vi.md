@@ -42,7 +42,7 @@ Thay `BUCKET_NAME` bằng tên bucket bạn đã tạo ở phần 1.
 ![WebApp](/images/4-test-front-end/4-test-front-end-5.png?featherlight=false&width=90pc)
 
 6. Trở lại với ứng dụng, chọn tab **My Document** ở menu phía bên trái. Bạn sẽ thấy danh sách các tệp vừa được tải lên.
-- Ấn **Choose** để chuyển sang chế độ xoá
+- Ấn **Select** để chuyển sang chế độ xoá
 
 ![WebApp](/images/4-test-front-end/4-test-front-end-6.png?featherlight=false&width=90pc)
 
@@ -51,13 +51,17 @@ Thay `BUCKET_NAME` bằng tên bucket bạn đã tạo ở phần 1.
 
 ![WebApp](/images/4-test-front-end/4-test-front-end-7.png?featherlight=false&width=90pc)
 
-- Tệp đã được xoá 
+- Ấn **OK** đê xác nhận xoá tệp.
 
 ![WebApp](/images/4-test-front-end/4-test-front-end-8.png?featherlight=false&width=90pc)
 
-- Kiểm tra bảng **Documents**
+- Tệp đã được xoá 
 
 ![WebApp](/images/4-test-front-end/4-test-front-end-9.png?featherlight=false&width=90pc)
+
+- Kiểm tra bảng **Documents**
+
+![WebApp](/images/4-test-front-end/4-test-front-end-10.png?featherlight=false&width=90pc)
 
 - Và bạn có thể ấn vào biểu tượng download để tải một tệp mà bạn muốn
 

@@ -51,16 +51,20 @@ Replace `BUCKET_NAME` with the bucket name you created in part 1.
 
 ![WebApp](/images/4-test-front-end/4-test-front-end-7.png?featherlight=false&width=90pc)
 
-- File has been deleted
+- Click **OK** to confirm deleting
 
 ![WebApp](/images/4-test-front-end/4-test-front-end-8.png?featherlight=false&width=90pc)
 
-- Check **Documents** table
+- File has been deleted
 
 ![WebApp](/images/4-test-front-end/4-test-front-end-9.png?featherlight=false&width=90pc)
 
-- And you can click the download icon to download a file you want
+- Check **Documents** table
 
 ![WebApp](/images/4-test-front-end/4-test-front-end-10.png?featherlight=false&width=90pc)
+
+- And you can click the download icon to download a file you want
+
+![WebApp](/images/4-test-front-end/4-test-front-end-11.png?featherlight=false&width=90pc)
 
 We have completed the implementation and testing of the API. You should clean up the resources of this workshop so that in the next article we will initialize resources with the AWS Serverless Application Model (AWS SAM).
