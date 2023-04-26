@@ -107,7 +107,7 @@ pre : " <b> 2. </b> "
 - Keep default Integration type as **Lambda Function**
 - Check **Use Lambda Proxy integration**
 - Select the region of the Lambda function you created
-- Select **delete_document** function
+- Select **delete_documents** function
 - Finally press **Save**
 
 ![ConfigAPI](/images/2-config-api-gw/2-config-api-gw-20.png?featherlight=false&width=90pc)

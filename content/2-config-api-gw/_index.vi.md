@@ -107,7 +107,7 @@ pre : " <b> 2. </b> "
 - Giữ mặc định kiểu tích hợp là **Lambda Function**
 - Tích vào **Use Lambda Proxy integration**
 - Chọn vùng của Lambda function mà bạn đã tạo
-- Chọn function **delete_document**
+- Chọn function **delete_documents**
 - Cuối cùng ấn **Save**
 
 ![ConfigAPI](/images/2-config-api-gw/2-config-api-gw-20.png?featherlight=false&width=90pc)

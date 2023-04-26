@@ -42,7 +42,7 @@ Bước đầu trong bài này, chúng ta sẽ host ứng dụng web (front-end)
 ![SettingBucket](/images/1-front-end-deployment/1-front-end-deployment-8.png?featherlight=false&width=90pc)
 
 9. Chọn **Enable** để kích hoạt host web tĩnh trên S3
-- Nhập **index.html** cho mục **Index document**
+- Nhập `index.html` cho mục **Index document**
 
 ![SettingBucket](/images/1-front-end-deployment/1-front-end-deployment-9.png?featherlight=false&width=90pc)
 
@@ -92,7 +92,7 @@ aws s3 cp build s3://BUCKET_NAME --recursive
 - Thay thế `BUCKET_NAME` bằng tên bucket mà bạn đặt
 
 {{% notice note %}}
-Nếu bạn tải lên thất bại, hãy cấu hình access key ID, secret access key, aws region và output format với câu lệnh **aws configure**
+Nếu bạn tải lên thất bại, hãy cấu hình access key ID, secret access key, aws region và output format với câu lệnh `aws configure`
 {{% /notice %}}
 
 Kết quả sau khi tải xong:

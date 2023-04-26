@@ -42,7 +42,7 @@ In the first step in this workshop, we will host the web application (front-end)
 
 9. Select **Enable** to enable host web static on S3
 - Select **Host a static website** for **Hosting type**
-- Enter **index.html** for **Index document** pattern
+- Enter `index.html` for **Index document** pattern
 
 ![SettingBucket](/images/1-front-end-deployment/1-front-end-deployment-9.png?featherlight=false&width=90pc)
 
@@ -92,7 +92,7 @@ aws s3 cp build s3://BUCKET_NAME --recursive
 - Replace `BUCKET_NAME` with the bucket name you created
 
 {{% notice note %}}
-If your upload fails, configure the access key ID, secret access key, aws region and output format with **aws configure** command
+If your upload fails, configure the access key ID, secret access key, aws region and output format with `aws configure` command
 {{% /notice %}}
 Result after uploading:
 
