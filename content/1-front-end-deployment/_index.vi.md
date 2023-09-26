@@ -103,4 +103,4 @@ Kết quả sau khi tải xong:
 
 ![SettingBucket](/images/1-front-end-deployment/1-front-end-deployment-15.png?featherlight=false&width=90pc)
 
-Bạn đã hoàn thành việc host website của mình trên S3. Sang phần tiếp theo chúng ta cập nhật lại các lambda function của bài workshop số 2.
+Bạn đã hoàn thành việc host website của mình trên S3. Sang phần tiếp theo chúng ta cập nhật lại các lambda function của bài workshop số 3.

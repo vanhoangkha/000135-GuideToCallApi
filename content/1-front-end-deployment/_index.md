@@ -102,4 +102,4 @@ Result after uploading:
 
 ![SettingBucket](/images/1-front-end-deployment/1-front-end-deployment-15.png?featherlight=false&width=90pc)
 
-You have finished hosting your website on S3. In the next section, we update the lambda functions of workshop 2.
+You have finished hosting your website on S3. In the next section, we update the lambda functions of workshop 3.

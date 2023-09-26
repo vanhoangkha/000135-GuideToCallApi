@@ -12,21 +12,21 @@
     <title>Config API Gateway :: Serverless - A Guide to Writing Front-End Code for Calling API Gateway</title>
 
     
-    <link href="/css/nucleus.css?1682574512" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1682574512" rel="stylesheet">
-    <link href="/css/hybrid.css?1682574512" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1682574512" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1682574512" rel="stylesheet">
-    <link href="/css/auto-complete.css?1682574512" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1682574512" rel="stylesheet">
-    <link href="/css/theme.css?1682574512" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1682574512" rel="stylesheet">
+    <link href="/css/nucleus.css?1695730699" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1695730699" rel="stylesheet">
+    <link href="/css/hybrid.css?1695730699" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1695730699" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1695730699" rel="stylesheet">
+    <link href="/css/auto-complete.css?1695730699" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1695730699" rel="stylesheet">
+    <link href="/css/theme.css?1695730699" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1695730699" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1682574512" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1695730699" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1682574512"></script>
+    <script src="/js/jquery-3.3.1.min.js?1695730699"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1682574512"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1682574512"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1695730699"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1695730699"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1682574512"></script>
+<script type="text/javascript" src="/js/search.js?1695730699"></script>
 
     
   </div>
@@ -291,7 +291,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>25-04-2023</font></i>
+        <i><font color=orange>26-09-2023</font></i>
     </left>
     <left>
         <br>
@@ -383,15 +383,7 @@
 
 
 
-	<h4 id="update-lambda-function">Update Lambda function</h4>
-<ol>
-<li>Open <a href="https://ap-southeast-1.console.aws.amazon.com/lambda/home?region=ap-southeast-1#/functions">AWS Lambda console</a>.</li>
-<li>Select <strong>upload_document</strong> function.</li>
-<li>Comment on line 13 and uncomment line 12.</li>
-<li>Click <strong>Deploy</strong></li>
-</ol>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-1.png?featherlight=false&amp;width=90pc" alt="UpdateFunction"></p>
-<h4 id="config-api-gateway">Config API Gateway</h4>
+	<h4 id="config-api-gateway">Config API Gateway</h4>
 <ol>
 <li>Open <a href="https://ap-southeast-1.console.aws.amazon.com/apigateway/main/apis?region=ap-southeast-1">Amazon API Gateway console</a></li>
 </ol>
@@ -405,10 +397,9 @@
 </ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-4.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="4">
-<li>Leave the default <strong>REST</strong> for the protocol.</li>
+<li>Leave the default <strong>New API</strong>.</li>
 </ol>
 <ul>
-<li>Select <strong>New API</strong></li>
 <li>Enter API name: <code>fcj-dms-api</code></li>
 <li>Select Endpoint type as <strong>Regional</strong></li>
 <li>Click <strong>Create API</strong></li>
@@ -419,7 +410,7 @@
 </ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-6.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="6">
-<li>Enter resource name: <code>docs</code>, then click <strong>Create Resource</strong></li>
+<li>Enter resource name: <code>docs</code>, then click <strong>Create resource</strong></li>
 </ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-7.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="7">
@@ -427,141 +418,107 @@
 </ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-8.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="8">
-<li>Click <strong>POST</strong> method và and click the <strong>✔</strong> symbol</li>
-</ol>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-9.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ol start="9">
-<li>Set up the method as follows:</li>
+<li>Click <strong>POST</strong> method.</li>
 </ol>
 <ul>
-<li>Keep default Integration type as <strong>Lambda Function</strong></li>
-<li>Check <strong>Use Lambda Proxy integration</strong></li>
+<li>Check <strong>Lambda Proxy integration</strong></li>
 <li>Select the region of the Lambda function you created</li>
 <li>Select <strong>upload_document</strong> function</li>
-<li>Finally press <strong>Save</strong></li>
+<li>Finally press <strong>Create method</strong></li>
 </ul>
+<p><img src="/images/2-config-api-gw/2-config-api-gw-9.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
+<ol start="9">
+<li>Select <strong>docs</strong> resource and click <strong>Create resource</strong>.</li>
+</ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-10.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="10">
-<li>Click <strong>OK</strong></li>
+<li>Enter resource name: <code>{id}</code>, then click <strong>Create resource</strong></li>
 </ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-11.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="11">
-<li>After created GET method, click <strong>Action | Create Resource</strong> to create next resource.</li>
+<li>Select <strong>/{id}</strong> resource and click <strong>Create method</strong>.</li>
 </ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-12.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="12">
-<li>Enter resource name: <code>id</code> and resource path as <code>{id}</code>, then click <strong>Create Resource</strong></li>
+<li>Select <strong>GET</strong> method.</li>
 </ol>
+<ul>
+<li>Check <strong>Lambda Proxy integration</strong></li>
+<li>Select the region of the Lambda function you created</li>
+<li>Select <strong>list_documents</strong> function</li>
+<li>Finally press <strong>Create method</strong></li>
+</ul>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-13.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="13">
-<li>Select <strong>{id}</strong> resource, then click <strong>Action | Create Method</strong></li>
+<li>Select <strong>/{id}</strong> resource, then click <strong>Create method</strong></li>
 </ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-14.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="14">
-<li>Select <strong>GET</strong> method and click the <strong>✔</strong> symbol</li>
-</ol>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-15.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ol start="15">
-<li>Set up the method as follows:</li>
+<li>Select <strong>GET</strong> method.</li>
 </ol>
 <ul>
-<li>Keep default Integration type as <strong>Lambda Function</strong></li>
-<li>Check <strong>Use Lambda Proxy integration</strong></li>
+<li>Check <strong>Lambda Proxy integration</strong></li>
 <li>Select the region of the Lambda function you created</li>
 <li>Select <strong>list_documents</strong> function</li>
-<li>Finally press <strong>Save</strong></li>
+<li>Finally click <strong>Create method</strong></li>
 </ul>
+<p><img src="/images/2-config-api-gw/2-config-api-gw-15.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
+<ol start="15">
+<li>Choose <strong>DELETE</strong> method, then select <strong>Method request</strong> and click <strong>Edit</strong>.</li>
+</ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-16.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="16">
-<li>Click <strong>OK</strong></li>
+<li>Expand <strong>URL Query String Parameters</strong> section.</li>
 </ol>
+<ul>
+<li>Click <strong>Add query string</strong> to add a new parameter</li>
+<li>Enter parameter name: <code>file</code>. This parameter is value of the name of the file you want to delete.</li>
+<li>Ấn <strong>Save</strong>.</li>
+</ul>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-17.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="17">
-<li>Click <strong>Action | Create Method</strong> to create a new method</li>
+<li>Select <strong>docs</strong> resource, then click <strong>Enable CORS</strong></li>
 </ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-18.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="18">
-<li>Select <strong>DELETE</strong> method and click the <strong>✔</strong> symbol</li>
+<li>Select <strong>POST</strong> method and click <strong>Save</strong>.</li>
 </ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-19.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="19">
-<li>Set up the method as follows:</li>
+<li>Do the same to enable CORS for <strong>/{id}</strong> resource</li>
 </ol>
 <ul>
-<li>Keep default Integration type as <strong>Lambda Function</strong></li>
-<li>Check <strong>Use Lambda Proxy integration</strong></li>
-<li>Select the region of the Lambda function you created</li>
-<li>Select <strong>delete_documents</strong> function</li>
-<li>Finally press <strong>Save</strong></li>
+<li>Select <strong>/{id}</strong> resource, then click <strong>Enable CORS</strong></li>
 </ul>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-20.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="20">
-<li>Click <strong>OK</strong></li>
+<li>Select <strong>GET</strong> and <strong>DELETE</strong> methods and click <strong>Save</strong>.</li>
 </ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-21.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="21">
-<li>Select <strong>DELETE</strong> method, then select <strong>Method Request</strong></li>
+<li>After completing the setup, we deploy the API. Select <strong>/</strong>, then click <strong>Deploy API</strong></li>
 </ol>
 <p><img src="/images/2-config-api-gw/2-config-api-gw-22.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
 <ol start="22">
-<li>Expand <strong>URL Query String Parameters</strong> section, click <strong>Add query string</strong> to add a new parameter</li>
-</ol>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-23.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ol start="23">
-<li>Enter parameter name: <code>file</code> and click the <strong>✔</strong> symbol. This parameter is value of of the name of the file you want to delete.</li>
-</ol>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-24.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ol start="24">
-<li>Select <strong>docs</strong> resource, then click <strong>Actions | Enable CORS</strong></li>
-</ol>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-25.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ol start="25">
-<li>Click <strong>Enable CORS and replace existing CORS headers</strong></li>
-</ol>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-26.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ol start="26">
-<li>Click <strong>Yes, replace existing values</strong></li>
-</ol>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-27.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ol start="27">
-<li>Do the same to enable CORS for <strong>{id}</strong> resource</li>
-</ol>
-<ul>
-<li>Select <strong>{id}</strong> resource, then click <strong>Actions | Enable CORS</strong></li>
-</ul>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-28.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ul>
-<li>Click <strong>Enable CORS and replace existing CORS headers</strong></li>
-</ul>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-29.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ul>
-<li>Click <strong>Yes, replace existing values</strong></li>
-</ul>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-30.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ol start="28">
-<li>After completing the setup, we deploy the API. Select <strong>/docs</strong>, then click <strong>Actions | Deploy API</strong></li>
-</ol>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-31.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ol start="29">
 <li>Select <strong>[New Stage]</strong></li>
 </ol>
 <ul>
 <li>Enter stage name: <code>dev</code></li>
 <li>Click <strong>Deploy</strong></li>
 </ul>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-32.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ol start="30">
+<p><img src="/images/2-config-api-gw/2-config-api-gw-23.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
+<ol start="23">
 <li>Note down the URL of the API used for the next section.</li>
 </ol>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-33.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ol start="31">
-<li>Expand the stage, select the <strong>POST</strong> method and write down the URL.</li>
+<p><img src="/images/2-config-api-gw/2-config-api-gw-24.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
+<h4 id="update-lambda-function">Update Lambda function</h4>
+<ol>
+<li>Open <a href="https://ap-southeast-1.console.aws.amazon.com/lambda/home?region=ap-southeast-1#/functions">AWS Lambda console</a>.</li>
+<li>Select <strong>upload_document</strong> function.</li>
+<li>Comment on line 13 and uncomment line 12.</li>
+<li>Click <strong>Deploy</strong></li>
 </ol>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-34.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
-<ol start="32">
-<li>Select the <strong>DELETE</strong> method and write down the URL.</li>
-</ol>
-<p><img src="/images/2-config-api-gw/2-config-api-gw-35.png?featherlight=false&amp;width=90pc" alt="ConfigAPI"></p>
+<p><img src="/images/2-config-api-gw/2-config-api-gw-1.png?featherlight=false&amp;width=90pc" alt="UpdateFunction"></p>
 <p>You have finished setting up the API. Next, we will test the API working and integrate it into our application.</p>
 
 
@@ -707,19 +664,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1682574512"></script>
-    <script src="/js/perfect-scrollbar.min.js?1682574512"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1682574512"></script>
-    <script src="/js/jquery.sticky.js?1682574512"></script>
-    <script src="/js/featherlight.min.js?1682574512"></script>
-    <script src="/js/highlight.pack.js?1682574512"></script>
+    <script src="/js/clipboard.min.js?1695730699"></script>
+    <script src="/js/perfect-scrollbar.min.js?1695730699"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1695730699"></script>
+    <script src="/js/jquery.sticky.js?1695730699"></script>
+    <script src="/js/featherlight.min.js?1695730699"></script>
+    <script src="/js/highlight.pack.js?1695730699"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1682574512"></script>
-    <script src="/js/learn.js?1682574512"></script>
-    <script src="/js/hugo-learn.js?1682574512"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1695730699"></script>
+    <script src="/js/learn.js?1695730699"></script>
+    <script src="/js/hugo-learn.js?1695730699"></script>
 
-    <link href="/mermaid/mermaid.css?1682574512" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1682574512"></script>
+    <link href="/mermaid/mermaid.css?1695730699" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1695730699"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
