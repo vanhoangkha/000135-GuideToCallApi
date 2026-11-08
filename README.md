@@ -1,4 +1,4 @@
-# 📡 Guide to Call API
+# Guide to Call API
 
 Build and consume REST APIs with API Gateway and Lambda.
 
@@ -8,7 +8,7 @@ This is a hands-on workshop from the **AWS First Cloud Journey** series.
 
 ## Workshop
 
-📖 **[Start the workshop](https://vanhoangkha.github.io/000135-GuideToCallApi/)**
+**[Start the workshop](https://vanhoangkha.github.io/000135-GuideToCallApi/)**
 
 ## Prerequisites
 
